@@ -1,0 +1,59 @@
+.book-table{
+    display: flex;
+    align-items: center;
+    @include media-query(991px) {
+        flex-direction: column-reverse;
+    }
+    .book-table-nav{
+        .nav{
+            gap: 16px;
+            @include media-query(575px) {
+                gap: 4px;
+            }
+            .nav-link{
+                color: $dark-gray;
+                @include media-query(575px) {
+                    font-size: 4vw;
+                    padding: 6px 10px;
+                }
+                &.active{
+                    color: $black;
+                }
+            }
+        }
+    }
+    .content-block{
+        position: relative;
+        border-radius: 20px;
+        border: 1px solid $light-gray;
+        background: url(../media/vector/book-table-bg.png) no-repeat;
+        background-position: center;
+        background-size: cover;
+        box-shadow: 0px 4px 8px 0px rgba(151, 151, 151, 0.25);
+        margin-right: -40px;
+        padding: 2.083vw 1.667vw;
+        @include media-query(991px) {
+            padding: 3.5vw 2.5vw;
+            margin: -40px 20px 0;
+        }
+        @include media-query(575px) {
+            padding: 24px 16px;
+            margin: -40px 16px 0;
+        }
+         @include media-query(380px) {
+            margin: -30px 8px 0;
+            padding: 20px 12px;
+        }
+    }
+    .img-block{
+        @include media-query-min(992px) {
+            flex-shrink: 0;
+        }
+        img{
+            border-radius: 20px;
+            @include media-query-min(992px) {
+                width: 29.167vw;
+            }
+        }
+    }
+}

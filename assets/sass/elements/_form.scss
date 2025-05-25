@@ -1,0 +1,142 @@
+/*-------------------------
+  Form Styling
+-------------------------*/
+.form-group {
+  position: relative;
+  width: 100%;
+  label{
+    color: $black;
+    font-weight: 500;
+    display: block;
+    text-align: left;
+  }
+}
+input[type="date"],
+input[type="text"],
+input[type="email"],
+input[type="file"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="submit"],
+input[type="tel"],
+textarea,
+.cus-form-control{
+  width: 100%;
+  background: transparent;
+  padding: 0.833vw;
+  padding-left: 0;
+  color: $medium-gray;
+  border: none;
+  border-bottom: 1px solid $black;
+  &:focus {
+    color: $medium-gray;
+    border: none;
+    outline: none;
+    background: transparent !important;;
+    border-bottom: 1px solid $black;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  &:hover {
+    color: $medium-gray;
+    border-bottom: 1px solid $black;
+  }
+  &::placeholder {
+    color: $medium-gray;
+    opacity: 1;
+  }
+}
+
+
+// Search Field 
+.search-field{
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: space-between;  
+  .search-btn{
+    flex-shrink: 0;
+    width: clamp(48px, 2.5vw, 56px);
+    height: clamp(48px, 2.5vw, 56px);
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    border: 0;
+    background: $accent-1;
+    color: $white;
+    border-radius: 5px;
+    @include media-query(575px) {
+      width: clamp(32px, 2.5vw, 48px);
+      height: clamp(32px, 2.5vw, 48px);
+    }
+    i{
+      font-size: clamp(24px, 1.458vw, 32px);
+      @include media-query(575px) {
+        font-size: clamp(18px, 1.458vw, 24px);
+      }
+    }
+  }
+}
+.filter-row{
+  display: flex;
+  gap: 32px;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 48px;
+  max-width: clamp(700px, 44.375vw, 900px);
+  @include media-query(575px) {
+    flex-wrap: wrap;
+  }
+}
+.filter-row-2{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  .right-filters{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: end;
+    .layout-filter{
+      display: flex;
+      gap: 8px;
+      li{
+        background: transparent;
+        border-radius: 10px;
+        a{
+          height: 48px;
+          width: 48px;
+          display: grid;
+          justify-content: center;
+          align-content: center;
+          i{
+            color: $black;
+            font-size: 24px;
+          }
+        }
+        &.active{
+          background: $accent-1;
+          a{
+            i{
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.cus-form-control-select{
+  padding: 0 24px;
+  border: 1px solid $black;
+  height: 48px;    
+  display: grid;
+  align-content: center;
+  border-radius: 10px;
+  width: clamp(200px, 11.146vw, 240px);
+}

@@ -1,0 +1,84 @@
+.about-us{
+    .text-block{
+        padding:  0 3.854vw;
+        br{
+            @include media-query(1199px) {
+                display: none;
+            }
+        }
+        .feature-points{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            width: 90%;
+            @include media-query(575px) {
+                gap: 16px;
+                width: 100%;
+            }
+            li{
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                min-width: 9.844vw;
+                
+                i{
+                    color: $accent-1;
+                    font-size: clamp(16px, 1.042vw, 20px);
+                }
+            }
+        }
+        .owner-block{
+            border-top: 1px solid $medium-gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5vw;
+            @include media-query(575px) {
+                border: 0;
+				flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .CEO-block{
+                display: flex;
+                align-items: center;
+                gap: 1.667vw;
+                @include media-query(575px) {
+                    flex-direction: row-reverse;
+                    gap: 16px;
+                }
+                img{
+                    width: clamp(60px, 4.167vw, 100px);
+                }
+            }
+            .margin-line{
+                height: clamp(120px, 6.5vw, 200px);
+                width: 1px;
+                background-color: $medium-gray;
+                @include media-query(575px) {
+                    display: none;
+                }
+            }
+            .CEO-sig{
+                @include media-query(575px) {
+                    padding-left: 20%;
+                }
+                img{
+                    width: clamp(200px, 16.875vw, 400px);
+                }
+            }
+        }
+    }
+    .img-block{
+        padding:  0 3.854vw;
+        img{
+            border-radius: 20px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.12);      
+            width: 100%;
+            object-fit: cover;
+            @include media-query(991px) {
+                height: clamp(300px, 30vw, 500px);
+            }
+        }
+    }
+}

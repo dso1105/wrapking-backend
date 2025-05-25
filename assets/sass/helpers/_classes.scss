@@ -1,0 +1,238 @@
+// Colors
+.color-primary {
+    color: $accent-1 !important;
+}
+.bg-primary {
+    background-color: $accent-1 !important;
+}
+
+.color-white {
+    color: $white !important;
+}
+.bg-white {
+    background-color: $white !important;
+}
+
+.color-black {
+    color: $black !important;
+}
+.bg-black {
+    background-color: $black !important;
+}
+
+.lightest-gray {
+    color: $lightest-gray !important;
+}
+.bg-lightest-gray {
+    background-color: $lightest-gray !important;
+}
+
+.light-gray {
+    color: $light-gray !important;
+}
+.bg-light-gray {
+    background-color: $light-gray !important;
+}
+
+.medium-gray {
+    color: $medium-gray !important;
+}
+.bg-medium-gray {
+    background-color: $medium-gray !important;
+}
+
+.dark-gray {
+    color: $dark-gray !important;
+}
+.bg-dark-gray {
+    background-color: $dark-gray !important;
+}
+
+.color-primary-2 {
+    color: $accent-2 !important;
+}
+.color-red {
+    color: #DF6254 !important;
+}
+.color-green{
+    color: #49B379 !important;
+}
+
+
+// Mix helper classes
+.b-unstyle {
+    border: 0;
+    background: transparent;
+}
+.fw-500{
+    font-weight: 500;
+}
+.fs-160{
+    font-family: $font-sec;
+    font-size: 8.333vw;
+    font-weight: 600;
+    line-height: 120%;
+    letter-spacing: -0.095vw;
+    @include media-query(1199px) {
+        font-size: 12vw;
+    }
+    @include media-query(991px) {
+        font-size: 16vw;
+    }
+    @include media-query(767px) {
+        font-size: 18vw;
+    }
+    @include media-query(575px) {
+        font-size: 25vw;
+    }
+}
+
+@media(max-width: 767px) {
+    .hide-on-mobile{
+        display: none;
+    }
+}
+
+.quantity{
+    background: $light-gray;
+    display: flex;
+    gap: 8px;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0.833vw;
+    height: 2.917vw;
+    @include media-query(1199px) {
+        padding: 0.53vw 0.8vw;
+        height: 3.17vw;
+    }
+    @include media-query(991px) {
+        padding: 0.76vw 0.9vw;
+        height: 3.7vw;
+    }
+    @include media-query(767px) {
+        padding: 1vw 1.5vw;
+        height: 6vw;
+        gap: 4px;
+    }
+    @include media-query(575px) {
+        padding: 1.5vw 2vw;
+        height: 9vw;
+        gap: 4px;
+    }
+    input{
+        border: none !important;
+        font-family: $font-sec;
+        font-size: 1.25vw;
+        font-weight: 400;
+        line-height: 125%;
+        width: 1.563vw;
+        text-align: center;
+        color: $black !important;
+        padding: 0 !important;
+        background: transparent;
+        @include media-query(1199px) {
+            width: 1.5vw;
+            font-size: 1.65vw;
+        }
+        @include media-query(991px) {
+            width: 2.5vw;
+            font-size: 1.95vw;
+        }
+        @include media-query(767px) {
+            font-size: 3.5vw;
+            width: 6vw;
+        }
+        @include media-query(575px) {
+            font-size: 5vw;
+            width: 8vw;
+        }
+        &:focus{
+            border: none;
+            outline: none;
+            color: $black;
+        }
+        &:hover{
+            border: none;
+            color: $black;
+        }
+    }
+    .decrement,
+    .increment{
+        display: grid;
+        align-content: center;
+        cursor: pointer;
+        i{
+            font-size: 0.938vw;
+            color: $black;
+            @include media-query(1199px) {
+                font-size: 1.138vw;
+            }
+            @include media-query(991px) {
+                font-size: 1.3vw;
+            }
+             @include media-query(767px) {
+                font-size: 2.5vw;
+            }
+             @include media-query(575px) {
+                font-size: 3.5vw;
+            }
+        }
+    }
+}
+
+.cart-btn{
+    height: 2.917vw;
+    width: 2.917vw;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid $accent-1;
+    background: rgba($accent-1, 0.20);
+    transition: $transition;
+    @include media-query(1199px) {
+        width: 3.7vw;
+        height: 3.7vw;
+    }
+    @include media-query(991px) {
+        width: 4vw;
+        height: 4vw;
+    }
+    @include media-query(767px) {
+        width: 7.5vw;
+        height: 7.5vw;
+        border-radius: 8px;
+    }
+    @include media-query(575px) {
+        height: 14vw;
+        width: 14vw;
+        border-radius: 8px;
+    }
+    img{
+        width: 1.042vw;
+        height: 1.042vw;
+        transition: $transition;
+
+        @include media-query(1199px) {
+            width: 1.5vw;
+            height: 1.5vw;
+        }
+        @include media-query(991px) {
+            width: 1.7vw;
+            height: 1.7vw;
+        }
+        @include media-query(767px) {
+             width: 1.9vw;
+            height: 1.9vw;
+        }
+        @include media-query(575px) {
+            width: 4vw;
+            height: auto;
+        }
+    }
+    &:hover{
+        img{
+            scale: 0.9;
+        }
+    }
+}

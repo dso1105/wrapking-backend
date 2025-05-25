@@ -1,0 +1,248 @@
+.cus-btn {
+  border-radius: 10px;
+  box-shadow: 0px 15px 30px 0px rgba(40, 37, 37, 0.50);
+  padding: 0.417vw 1.25vw 0.417vw 0.417vw;
+  transition: $transition;
+  font-size: 0.938vw;
+  font-weight: 500;
+  line-height: 120%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: $transition;
+  width: fit-content;
+  @include media-query(991px) {
+    gap: 8px;    
+    padding: 0.8vw 1.6vw 0.8vw 0.8vw;
+    font-size: 1.8vw;
+  }
+  @include media-query(575px) {
+    gap: 8px;    
+    padding: 2vw 4vw 2vw 2vw;
+    font-size: 4vw;
+  }
+
+  .icon-wrapper {
+    flex-shrink: 0;
+    width: 2.083vw;
+    height: 2.083vw;
+    position: relative;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    @include media-query(991px) {
+      width: 3.83vw;
+      height: 3.83vw;
+    }
+    @include media-query(575px) {
+      width: 6.083vw;
+      height: 6.083vw;
+    }
+    .icon-svg{
+      width: 1.042vw ;
+      height: 1.042vw;
+
+      @include media-query(991px) {
+        width: 1.5vw;
+        height: 1.5vw;
+      }
+      @include media-query(575px) {
+        width: 3vw;
+        height: 3vw;
+      }
+    }
+    .icon-svg-copy {
+      position: absolute;
+      transform: translate(-150%, 150%);
+    }
+  }
+  &:hover{
+    .icon-wrapper {
+      .icon-svg{
+        :first-child{
+          transition: transform .3s ease-in-out;
+          transform: translate(150%, -150%);
+        }
+      }
+      .icon-svg-copy {
+        transition: transform .3s ease-in-out .1s;
+        transform: translate(0);
+        :first-child{
+          transform: translate(0);
+        }
+      }
+    }
+  }
+  &.primary{
+    box-shadow: 0px 5px 20px 0px rgba(255, 92, 0, 0.50);
+    background: linear-gradient(99deg, #FF8946 -4.71%, #FF5C00 93.14%);  
+    color: $white;
+    transition: $transition;
+    .icon-wrapper{
+      color: $accent-1;
+      background: $white;
+      svg{
+        fill: $accent-1;
+        path{
+          stroke: $accent-1;
+        }
+        &.icon-svg-copy {
+          path{
+            stroke: $accent-1;
+          }
+        }
+      }
+    }
+  }
+  &.primary-banner{
+    padding: 0.833vw 1.667vw;
+    color: $white;
+    background: linear-gradient(99deg, #FF8946 -4.71%, #FF5C00 93.14%);
+    box-shadow: 0px 15px 30px 0px rgba(255, 92, 0, 0.50);
+    @include media-query(1199px) {
+      padding: 1.3vw 2.6vw;
+    }
+    @include media-query(575px) {
+      padding: 2vw 4vw;
+    }
+  }
+  &.dark{
+    background-color: $black;  
+    color: $white;
+    transition: $transition;
+    .icon-wrapper{
+      background: $white;
+      color: $black;
+      svg{
+        fill: $black;
+        path{
+          stroke: $black;
+        }
+        &.icon-svg-copy {
+          path{
+            stroke: $accent-1;
+          }
+        }
+      }
+    }
+    &:hover{
+      background: $accent-1;
+      box-shadow: 0px 15px 30px 0px rgba(255, 92, 0, 0.50);
+      transition: $transition;
+    }
+  }
+  &.light{
+    display: inline-flex;
+    background-color: $white;  
+    color: $black;
+    transition: $transition;
+    box-shadow: 0px 10px 20px 0px rgba(40, 37, 37, 0.25);
+    // padding: 12px 16px 12px 12px;
+    .icon-wrapper{
+      background: $black;
+      color: $white;
+      svg{
+        fill: $white;
+        path{
+          stroke: $white;
+        }
+        // &.icon-svg-copy {
+        //   path{
+        //     stroke: $accent-1;
+        //   }
+        // }
+      }
+    }
+    &:hover{
+      background: $white;
+      box-shadow: 0px 15px 30px 0px rgba(255, 92, 0, 0.50);
+      transition: $transition;
+    }
+  }
+  &.outline{
+    background: transparent;
+    color: $accent-1;
+    border: 1px solid $accent-1;
+    box-shadow: none;
+    transition: $transition;
+    .icon-wrapper{
+      background: $accent-1;
+      color: $white;
+    }
+    &:hover{
+      background: $accent-1;
+      transition: $transition;
+      color: $white;
+      .icon-wrapper{
+        background: $white;
+        color: $white;
+        svg{
+          fill: $accent-1;
+          path{
+            stroke: $accent-1;
+          }
+          &.icon-svg-copy {
+            path{
+              stroke: $accent-1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+ 
+
+.slider-arrow{
+  display: flex;
+  align-items: center;
+  gap: 1.25vw;
+  .arrow{
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $lightest-gray;
+    border: 1px solid $black;
+    border-radius: 0.58125vw;
+    transition: $transition;
+    padding: 0;
+    svg{
+      transition: $transition;
+      width: 1.71875vw;
+      height: 1.71875vw;
+      @include media-query(991px) {
+        width: 2.4vw;
+        height: 2.4vw;
+      }
+      path{
+        transition: $transition;
+      }
+    }
+    &.slick-disabled{
+      svg{
+        opacity: 0.3;
+      }
+    }
+    &:hover{
+      &:not(.slick-disabled){
+        background: $accent-1;
+        border-color: $accent-1;
+        box-shadow: 0px 0px 20px 1px $accent-1;
+        svg{
+          path{
+            stroke: $white;
+          }
+        }
+      }
+    }
+  }
+}

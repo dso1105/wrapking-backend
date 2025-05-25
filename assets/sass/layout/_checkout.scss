@@ -1,0 +1,150 @@
+.billing-checkbox {
+    input {
+        padding: 0;
+        display: none;
+        cursor: pointer;
+
+        &:checked+label {
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 2px;
+                left: 6px;
+                width: 6px;
+                height: 15px;
+                z-index: 10;
+                border: solid $black;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    label {
+        position: relative;
+        cursor: pointer;
+        color: $black;
+
+        &:before {
+            content: "";
+            -webkit-appearance: none;
+            background: transparent;
+            border: 1px solid $light-gray;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-top: -3px;
+        }
+    }
+}
+
+.payment-method {
+    border-bottom: 1px solid $medium-gray;
+    ul{
+        li{
+            padding: 24px 0;
+            border-top: 1px solid $light-gray;
+        }
+    }
+    label {
+        color: $black;
+    }
+    label:has(input[type='radio']) {
+        line-height: 1.1;
+        display: grid;
+        grid-template-columns: 1em auto;
+        align-items: baseline;
+        gap: 0.5em;
+        cursor: pointer;
+
+        // &:not(& ~ &) {
+        //     -webkit-margin-before: 1em;
+        //     margin-block-start: 1em;
+        // }
+
+        >input[type='radio'] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+
+            width: 20px;
+            height: 20px;
+            border: 2px solid $accent-1;
+            margin-top: 5px;
+            border-radius: 50%;
+            transform: translateY(-0.075em);
+
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+
+            &::before {
+                content: "";
+                width: 0.51em;
+                height: 0.5em;
+                border-radius: 50%;
+                transform: scale(0);
+                transition: 120ms transform ease-in-out;
+                background-color: $accent-1;
+            }
+
+            &::after {
+                content: "";
+                width: 2em;
+                height: 2em;
+                border-radius: 50%;
+                background-color: $accent-1;
+                opacity: 0;
+                position: absolute;
+                z-index: -1;
+                inset-block-start: 50%;
+                inset-inline-start: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            &:is(:active):not(:checked) {
+                &::after {
+                    background-color: $accent-1;
+                }
+            }
+
+            &:checked {
+                border-color: $accent-1;
+
+                &::after {
+                    opacity: 0;
+                }
+
+                &::before {
+                    transform: scale(1);
+                }
+
+                &:is(:hover, :focus) {
+                    &::after {
+                        background-color: $accent-1;
+                    }
+                }
+
+                &:is(:active) {
+                    &::after {
+                        background-color: $accent-1;
+                    }
+                }
+            }
+
+            &:focus {
+                outline: unset;
+            }
+        }
+    }
+}

@@ -1,0 +1,157 @@
+// Blogs 
+.blog-card{
+    .img-block{
+        border-radius: 20px;
+        overflow: hidden;
+        img{
+            border-radius: 20px;
+            -webkit-transition: all 0.6s linear 0s;
+                transition: all 0.6s linear 0s;
+        }
+    }
+    &:hover{
+      .img-block{
+        border-radius: 20px;
+        img{
+            border-radius: 20px;
+            -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+            -webkit-transition: all 0.6s linear 0s;
+            transition: all 0.6s linear 0s;
+        }
+    }  
+    }
+    .blog-info-block{
+        background: url(../media/blogs/Info-bg.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0 4.28%;
+        position: relative;
+        margin-top: -15%;
+        padding: 1.25vw;
+        border-radius: 20px;
+        border: 1px solid #E9E9E9;
+        @include media-query(991px) {
+            padding: 16px;
+        }
+        .category-tag{
+            max-width: 15.62%;
+        }
+        .blog-analytic{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0;
+            flex-wrap: wrap;
+            @include media-query(991px) {
+                gap: 8px;
+            }
+            li{
+                margin-left: 16px;
+                
+                &::marker{
+                    color: $accent-1;
+                }
+                &:first-child{
+                    list-style: none;
+                    margin-left: 0;
+                }
+            }
+        }
+        .text-bottom-block{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            @include media-query(1399px) {
+                gap: 12px;
+            }
+            .author-block{
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                @include media-query(1399px) {
+                    gap: 12px;
+                }
+                img{
+                    width: 2.5vw;
+                    min-width: 32px;
+                }
+            }
+        }
+    }
+    &.blog-list{
+        .title{
+            font-family: $font-primary;
+            font-size: 2.083vw;
+            font-weight: 600;
+            line-height: 120%;
+            letter-spacing: -0.042vw;
+            @include media-query(1199px) {
+                font-size: 3.1vw;
+            }
+            @include media-query(991px) {
+                font-size: 4.2vw;
+            }
+            @include media-query(767px) {
+                font-size: 3.1vw;
+            }
+            @include media-query(575px) {
+                font-size: 5.2vw;
+            }
+        }
+    }
+}
+.blog-detail{
+    img{
+        border-radius: 20px;
+    }
+    .content{
+        
+        .category-tag{
+             max-width: 15.62%;
+            img{
+                border-radius: 0 ;
+            }
+        }
+        .blog-analytic{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0;
+            flex-wrap: wrap;
+            @include media-query(575px) {
+                gap: 8px;
+            }
+            li{
+                margin-left: 16px;
+                
+                &::marker{
+                    color: $accent-1;
+                }
+                &:first-child{
+                    list-style: none;
+                    margin-left: 0;
+                }
+            }
+        }
+        .quote-block{
+            border-radius: 20px;
+            border: 1px solid $light-gray;
+            box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.10);     
+            background: url(../media/bg/quote-bg.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;      
+            padding: 48px 32px;
+            @include media-query(991px) {
+                padding: 32px 24px;
+            }
+            @include media-query(575px) {
+                padding: 24px 16px;
+            }
+        }
+    }
+}

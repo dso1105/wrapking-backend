@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrap King Admin Panel</title>
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/all.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/ion.rangeSlider.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/vendor/nice-select.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <style>
+        input, button, textarea { padding: 0.5rem; margin: 0.25rem; }
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 0.5rem; }
+        textarea { vertical-align: middle; }
+        img.logo { max-height: 80px; display: block; margin: 1rem auto; }
+        img.product-image { max-height: 100px; }
+        #preloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #f8f8f8;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .loading span {
+            font-size: 2rem;
+            font-weight: bold;
+            animation: fade 1s infinite alternate;
+        }
+        @keyframes fade {
+            from { opacity: 1; }
+            to { opacity: 0.3; }
+        }
+        .logo-bottom-vector {
+            max-height: 100px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body id="body">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loading">
+            <span data-text="W">W</span>
+            <span data-text="R">R</span>
+            <span data-text="A">A</span>
+            <span data-text="P">P</span>
+            <span data-text="-">-</span>
+            <span data-text="K">K</span>
+            <span data-text="I">I</span>
+            <span data-text="N">N</span>
+            <span data-text="G">G</span>
+        </div>
+        <img src="assets/media/logo.png" alt="" class="logo-bottom-vector">
+    </div>
+
+    <div id="login-section">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button onclick="login()">Login</button>
+        <p id="login-msg"></p>
+    </div>
+
+    <div id="admin-section" style="display:none">
+        <img src="assets/media/logo.png" alt="Wrap King Logo" class="logo">
+
+        <section class="inner-page-banner">
+            <h2 class="page-title">Admin Panel - Übersicht</h2>
+        </section>
+
+        <div class="page-content">
+            <section class="pt-80 pb-40">
+                <div class="container-fluid">
+                    <h2>Products</h2>
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Stock</th>
+                                <th>Price</th>
+                                <th>Visible</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                    <h3>Add Product</h3>
+                    <input type="text" id="product-title" placeholder="Title">
+                    <textarea id="product-description" placeholder="Description" rows="2" cols="20"></textarea>
+                    <input type="text" id="product-image" placeholder="Image URL">
+                    <input type="number" id="product-stock" placeholder="Stock">
+                    <input type="number" id="product-price" placeholder="Price" step="0.01">
+                    <select id="product-visible">
+                        <option value="1">Visible</option>
+                        <option value="0">Hidden</option>
+                    </select>
+                    <button onclick="addProduct()">Add</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        let token = '';
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.token) {
+                    token = data.token;
+                    document.getElementById('login-section').style.display = 'none';
+                    document.getElementById('admin-section').style.display = 'block';
+                    loadProducts();
+                } else {
+                    document.getElementById('login-msg').textContent = 'Login failed';
+                }
+            });
+        }
+
+        function loadProducts() {
+            fetch('http://localhost:3000/api/products', {
+                headers: { 'Authorization': 'Bearer ' + token }
+            })
+            .then(res => res.json())
+            .then(products => {
+                const tableBody = document.querySelector('#products-table tbody');
+                tableBody.innerHTML = '';
+                products.forEach(p => {
+                    const row = `<tr>
+                        <td>${p.id}</td>
+                        <td>${p.title}</td>
+                        <td>${p.description || ''}</td>
+                        <td><img src="${p.image_url || ''}" alt="image" class="product-image"></td>
+                        <td>${p.stock}</td>
+                        <td>${p.price}</td>
+                        <td>${p.visible}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            });
+        }
+
+        function addProduct() {
+            const title = document.getElementById('product-title').value;
+            const description = document.getElementById('product-description').value;
+            const image_url = document.getElementById('product-image').value;
+            const stock = parseInt(document.getElementById('product-stock').value);
+            const price = parseFloat(document.getElementById('product-price').value);
+            const visible = parseInt(document.getElementById('product-visible').value);
+
+            fetch('http://localhost:3000/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({ title, description, image_url, stock, price, visible })
+            })
+            .then(() => {
+                loadProducts();
+            });
+        }
+
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

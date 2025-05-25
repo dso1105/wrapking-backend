@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Email with PHPMailer</title>
+    <script>
+        async function sendEmail() {
+            const orderData = {
+                firstName: "test",
+                lastName: "test",
+                email: "jeremoc@icloud.com",
+                number: "1234567890", // Replace with a valid number or variable
+                additionalNote: "This is a test order.", // Replace with a valid note or variable
+                paymentMethod: "cash",
+                orderID: "4",
+                cart: [{name: "test", price: 10, quantity: 10}] // Replace with actual cart data if available
+            };
+ 
+            // Create an XMLHttpRequest object
+            try {
+                const response = await fetch("MailHandler.php", {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(orderData)
+                });
+
+                const result = await response.text();
+                if (response.ok) {                  
+                  console.log(result);
+                } else {
+                  console.error("The email for this order could not be sent." + result);
+                }
+            } catch (error) {
+            console.error(error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Send an Email with PHPMailer</h1>
+
+    <!-- Button triggers the AJAX function -->
+    <button onclick="sendEmail()">Send Email</button>
+
+    <!-- Div where the PHP response will be displayed -->
+    <div id="response" style="margin-top: 20px; color: green;"></div>
+</body>
+</html>

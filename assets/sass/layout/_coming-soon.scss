@@ -1,0 +1,48 @@
+.coming-soon{
+    position: relative;
+    padding: clamp(60px, 5.208vw, 150px) 0;
+    display: flex;
+    align-items: center;    
+    place-content: center;
+    flex-direction: column;
+    gap: clamp(16px, 3.333vw, 64px);
+    height: 100vh;
+     @include media-query(1399px) {
+        padding: clamp(32px, 3vw, 64px) 0;
+        gap: clamp(32px, 2vw, 48px);
+    }
+    .countdown{
+        display: flex;
+        gap: 32px;
+        @include media-query(575px) {
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        li{
+            display: grid;
+            justify-content: center;
+            text-align: center;
+            align-content: center;
+            gap: 10px;
+            border: 1px solid $light-gray;
+            width: clamp(80px, 6.667vw, 130px);
+            height: clamp(100px, 7.396vw, 150px);
+            border-radius: 20px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.12);
+            @include media-query(1399px) {
+                width: clamp(80px, 4vw, 100px);
+                height: clamp(100px, 5vw, 120px);
+            }
+            @include media-query(575px) {
+                width: clamp(70px, 4vw, 80px);
+                height: clamp(80px, 5vw, 100px);
+            }
+        }
+    }
+    .desx{
+        margin-bottom: clamp(16px, 1.6vw, 48px);
+    }
+    .notify-text{
+        margin-bottom:  clamp(24px, 2.5vw, 64px);
+    }
+}

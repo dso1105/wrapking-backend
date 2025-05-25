@@ -1,0 +1,56 @@
+.stats{
+    background: url(../media/bg/stats-bg-dots.png);
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .content{
+        display: flex;
+        width: fit-content;
+        padding: 24px 32px;
+        border-radius: 20px;
+        border: 1px solid $light-gray;
+        background: radial-gradient(25.21% 25.21% at 50% 74.79%, rgba(252, 253, 253, 0.50) 0%, rgba(252, 253, 253, 0.50) 100%);
+        @include media-query(991px) {
+            padding: 12px 16px;
+        }
+        @include media-query(767px) {
+            padding: 8px 12px;
+        }
+        @include media-query(575px) {
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .stat_block{
+            padding: 8px 48px;
+            border-right: 2px solid $light-gray;
+            @include media-query(991px) {
+                padding: 8px 24px;
+            }
+            @include media-query(767px) {
+                padding: 8px 16px;
+            }
+            @include media-query(575px) {
+                width: 47%;
+                border: 0;
+                text-align: center;
+            }
+            .numbers{
+                display: flex;
+                align-items: center;
+            }
+            br{
+                @include media-query(575px) {
+                    display: none;
+                }
+            }
+            &:first-child{
+                padding-left: 0;
+            }
+            &:last-child{
+                padding-right: 0;
+                border-right: 0;
+            }
+        }
+    }
+    
+}

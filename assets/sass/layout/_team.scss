@@ -1,0 +1,27 @@
+.team-card-1{
+    .img-block{
+        border-radius: 20px;
+        box-shadow: 0px 2.957px 5.914px 0px rgba(151, 151, 151, 0.25);
+    }
+}
+.team-card-2{
+    background: url(../media/team/t2_bg.png);
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+    stroke-width: 1px;
+    stroke: $light-gray;
+    filter: drop-shadow(0px 4px 8px rgba(151, 151, 151, 0.25));
+    border-radius: 0 0 30px 30px;
+    width: 100%;
+    .text-block{
+        padding-left: 16px;
+        padding-top: 30%;
+        width: 43.5714%;
+        flex-shrink: 0;
+    }
+}

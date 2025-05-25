@@ -1,0 +1,209 @@
+.cart-table{
+	thead{
+		tr{
+			th{
+				padding: 32px 0 24px;
+				&:first-child{
+					padding-left: 24px;
+				}
+			}
+		}
+	}
+	tbody{
+		tr{
+			&:last-child{
+				td{
+					border: none;
+				}
+			}
+			td{
+				vertical-align: middle;
+				padding: 24px 0;
+				&.product-block{
+					padding-left: 24px;
+					display: flex;
+					gap: 24px;
+					align-items: center;
+					img{
+						box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.12);
+					}
+					.remove-from-cart-btn{
+						width: 40px;
+						height: 40px;
+						display: grid;
+						align-content: center;
+						text-align: center;
+						background: $light-gray;
+						border-radius: 5px;
+						i{
+							font-size: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.cart-item-card{
+	padding: 1.667vw 1.25vw;
+    border-radius: 30px;
+    background: url(../media/vector/doots-card.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid $light-gray;
+    box-shadow: $shadow;
+    width: 100%;
+    position: relative;
+    @include media-query(1599px) {
+        border-radius: 20px;
+    }
+    @include media-query(991px) {
+        padding: 2vw;
+    }
+    @include media-query(767px) {
+        padding: 3vw;
+    }
+    @include media-query(575px) {
+        padding: 5vw 4.5vw;
+    }
+	.remove-from-cart-btn{
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        z-index: 50;
+        i{
+           color: $black;
+           font-size: 20px; 
+        }
+    }
+}
+.cart-summary{
+	padding: 1.667vw 1.25vw;
+    border-radius: 30px;
+    background: url(../media/vector/doots-card.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid $light-gray;
+    box-shadow: $shadow;
+    width: 100%;
+	@include media-query(1599px) {
+        border-radius: 20px;
+    }
+    @include media-query(991px) {
+        padding: 2vw;
+    }
+    @include media-query(767px) {
+        padding: 3vw;
+    }
+    @include media-query(575px) {
+        padding: 5vw 4.5vw;
+    }
+	.title{ 
+		border-bottom: 1px solid $light-gray;
+		padding-bottom: 24px;
+	}
+	.cart-summary-detail{
+		border-bottom: 1px solid $light-gray;
+	}
+}
+// Mini Cart 
+.show-sidebar-cart {
+	// overflow: hidden !important;
+	// height: 100% !important;
+	#sidebar-cart {
+		right: 0;
+		// visibility: visible;
+	}
+}
+#sidebar-cart {
+	background: $white;
+	padding: 32px;
+	position: fixed;
+	display: block;
+	width: 504px;
+	height: 100vh;
+	z-index: 99999;
+	top: 0;
+	right: -550px;
+	transition: right 0.5s ease-in-out;
+    @include media-query(575px) {
+        width: 95%;
+    }
+	.close-button {
+		.close-icon {
+			font-size: 24px;
+            color: $black;
+			transition: all 0.5s linear;
+		}
+	}
+	.product-list {
+		margin: 0;
+		padding: 0 0 15px 0;
+		list-style: none;
+		height: calc(100vh - 316px);
+		overflow-x: hidden;
+		overflow-y: auto;
+		display: block;
+		position: relative;
+		z-index: 0;
+         @include media-query(575px) {
+		    height: calc(100vh - 320px);
+        }
+		.product-item {
+            position: relative;
+			display: flex;
+            align-items: center;
+            gap: 16px;
+            .item-image{
+                max-width: 110px;
+            }
+            .product-text{
+                width: 100%;
+            }
+            .qp_row{
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                justify-content: space-between;
+            }
+		}
+	}
+	.price-total{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 16px;
+    }
+	.action-buttons {
+		display: flex;
+        justify-content: space-between;
+		align-items: center;
+		gap: 16px;
+        @include media-query(575px) {
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+		a {
+            @include media-query(575px) {
+                width: 100%;
+            }
+		}
+	}
+}
+#sidebar-cart-curtain {
+	background: rgba($black, 0.2);
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+}
+.vr-line{
+    background: $light-gray;
+    width: 100%;
+    height: 1px;
+}

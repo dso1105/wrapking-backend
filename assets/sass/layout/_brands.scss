@@ -1,0 +1,16 @@
+.brands{
+    .brand-item{
+        img{
+            filter: grayscale(1);
+            -webkit-transition: all 0.6s linear 0s;
+            transition: all 0.6s linear 0s;
+        }
+        &:hover{
+            img{
+                filter: grayscale(0);
+                -webkit-transition: all 0.6s linear 0s;
+                transition: all 0.6s linear 0s;
+            }
+        }
+    }
+}
